@@ -3,20 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blod de viagens</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #EAEAEA;
+        color: #2F2F2F;
+        line-height: 1.6;
+      }
+    
+      header {
+        background-color: #084C61;
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      }
+    
+      header h1 {
+        font-size: 2.5rem;
+        animation: fadeInDown 1s ease-in-out;
+      }
+    
+      header h2 {
+        font-size: 1.3rem;
+        font-weight: 400;
+        opacity: 0.9;
+        animation: fadeInUp 1s ease-in-out;
+      }
+    
+      nav {
+        background-color: #F5F5F5;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border-top: 3px solid #084C61;
+        border-bottom: 3px solid #084C61;
+      }
+    
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+        list-style: none;
+      }
+    
+      nav a {
+        text-decoration: none;
+        color: #084C61;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+    
+      nav a:hover {
+        color: #2F2F2F;
+      }
+    
+      section {
+        padding: 2rem;
+        background-color: white;
+        margin: 1.5rem auto;
+        width: 90%;
+        max-width: 1000px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        animation: fadeIn 1s ease-in-out;
+      }
+    
+      section h3 {
+        margin-bottom: 1rem;
+        color: #084C61;
+      }
+    
+      article p {
+        margin-bottom: 1rem;
+      }
+    
+      img, video {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-top: 1rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+    
+      aside {
+        background-color: #F0F0F0;
+        padding: 1.5rem;
+        margin: 1rem auto;
+        width: 90%;
+        max-width: 900px;
+        border-left: 5px solid #084C61;
+        border-radius: 5px;
+        animation: slideIn 1s ease-in-out;
+      }
+    
+      aside h4 {
+        color: #084C61;
+        margin-bottom: 0.5rem;
+      }
+    
+      ul li, ol li {
+        margin-left: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+    
+      blockquote {
+        border-left: 5px solid #084C61;
+        margin: 1rem 0;
+        padding-left: 1rem;
+        font-style: italic;
+        background-color: #F8F8F8;
+      }
+    
+      footer {
+        background-color: #084C61;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+      }
+    
+      form {
+        margin-top: 1rem;
+      }
+    
+      input, textarea, select, button {
+        width: 100%;
+        padding: 0.7rem;
+        margin-top: 0.5rem;
+        border: 1px solid #CCC;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+    
+      button {
+        background-color: #084C61;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 1rem;
+      }
+    
+      button:hover {
+        background-color: #062F3C;
+      }
+    
+      /* Animações */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+    
+      /* Responsividade */
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+    
+        section, aside {
+          padding: 1rem;
+        }
+      }
+    </style>
+    
+    
 </head>
 <body>
     <header>
     <h1>Explorando o mundo</h1>
     <h2>Seu guia de viagens ao redor do mundo</h2>
-    <nav>
-        <ul>
-            <li><a href="#Europa">Europa</a></li>
-            <li><a href="#Asia">Ásia</a></li>
-            <li><a href="#America-do-sul">América do Sul</a></li>
-            <li><a href="#Dicas">Dicas</a></li>
-        </ul>
-    </nav>
     </header>
 
     <nav>
@@ -40,7 +220,7 @@
             <article>
               <p>Paris é sinônimo de romance, arte e elegância. Das margens do Sena à torre Eiffel iluminada, tudo em Paris inspira encanto e história.</p>
               <p><strong>Dica de ouro:</strong> evite restaurantes muito turísticos. Caminhe algumas ruas além dos pontos principais e descubra bistrôs autênticos e mais baratos.</p>
-              <p>Veja abaixo um vídeo com uma caminhada noturna pelas ruas parisienses. <em>Vale cada segundo!</em></p>
+              <p>Veja abaixo um vídeo com imagens noturnas pelas ruas parisienses. <em>Vale cada segundo!</em></p>
             <img src="img/paris.jpg" alt="Vista da Torre Eiffel" />
             <video src="vid/video paris.mp4" controls>Seu navegador não suporta vídeo.</video>
         </article>
@@ -50,7 +230,7 @@
         <article>
           <p>Andar por Roma é como visitar um museu a céu aberto. Coliseu, Fontana di Trevi, Vaticano — tudo respira história e beleza.</p>
           <p><strong>Não esqueça:</strong> leve sempre uma garrafa de água reutilizável. As fontes públicas (nasoni) espalhadas pela cidade têm água potável e gelada!</p>
-          <p>Dá uma olhada nesse vídeo com os principais pontos históricos de Roma. <em>É de arrepiar!</em></p>
+          <p>Dá uma olhada nesse vídeo com o famoso Coliseu de Roma. <em>É de arrepiar!</em></p>
             <img src="img/coliseu-roma.jpg" alt="Coliseu de Roma" />
             <video src="vid/video roma.mp4" controls>Seu navegador não suporta vídeo.</video>
         </article>
@@ -62,7 +242,7 @@
         <article>
           <p>Tóquio é uma explosão de sensações: luzes neon, templos milenares, culinária inovadora e tecnologia por todos os lados.</p>
           <p><strong>Dica de viajante:</strong> experimente um jantar em um izakaya (bar típico japonês). É barato, autêntico e cheio de surpresas!</p>
-          <p><em>Olhe esse vídeo</em> e mergulhe na energia de Shibuya, o cruzamento mais movimentado do mundo:</p>>
+          <p><em>Olhe esse vídeo</em> e mergulhe na energia de Shibuya, o cruzamento mais movimentado do mundo:</p>
             <img src="img/tokyyy.jpg" alt="Vista de Tóquio" />
             <video src="vid/video tokyo.mp4" controls>Seu navegador não suporta vídeo.</video>
         </article>

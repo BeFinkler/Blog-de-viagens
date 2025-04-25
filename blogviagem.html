@@ -1,391 +1,486 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blod de viagens</title>
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog de viagens</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #EAEAEA;
+      color: #2F2F2F;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #084C61;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    header h2 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    nav {
+      background-color: #F5F5F5;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-top: 3px solid #084C61;
+      border-bottom: 3px solid #084C61;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #084C61;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #2F2F2F;
+    }
+
+    section {
+      padding: 2rem;
+      background-color: white;
+      margin: 1.5rem auto;
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    section h3 {
+      margin-bottom: 1rem;
+      color: #084C61;
+    }
+
+    article p {
+      margin-bottom: 1rem;
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .asides-container {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 25%;
+      right: 20px;
+      z-index: 1000;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+
+    aside {
+      background-color: #F9F9F9;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      width: 250px;
+      border-left: 5px solid #084C61;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      animation: slideIn 1s ease-in-out;
+    }
+
+
+    aside h4 {
+      color: #084C61;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+
+    aside p {
+      margin-bottom: 1rem;
+    }
+
+
+    aside ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    aside ul li {
+      margin-bottom: 0.8rem;
+    }
+
+    aside ul li a {
+      color: #084C61;
+      text-decoration: none;
+    }
+
+    aside ul li a:hover {
+      text-decoration: underline;
+    }
+
+
+
+
+    blockquote {
+      border-left: 5px solid #084C61;
+      margin: 1rem 0;
+      padding-left: 1rem;
+      font-style: italic;
+      background-color: #F8F8F8;
+    }
+
+    footer {
+      background-color: #084C61;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    form {
+      margin-top: 1rem;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border: 1px solid #CCC;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #084C61;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #062F3C;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-    
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #EAEAEA;
-        color: #2F2F2F;
-        line-height: 1.6;
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-    
-      header {
-        background-color: #084C61;
-        color: white;
-        padding: 2rem;
-        text-align: center;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
       }
-    
-      header h1 {
-        font-size: 2.5rem;
-        animation: fadeInDown 1s ease-in-out;
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-    
-      header h2 {
-        font-size: 1.3rem;
-        font-weight: 400;
-        opacity: 0.9;
-        animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-    
-      nav {
-        background-color: #F5F5F5;
-        padding: 1rem;
-        margin-bottom: 2rem;
-        border-top: 3px solid #084C61;
-        border-bottom: 3px solid #084C61;
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-    
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
       nav ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1.2rem;
-        list-style: none;
+        flex-direction: column;
+        align-items: center;
       }
-    
-      nav a {
-        text-decoration: none;
-        color: #084C61;
-        font-weight: bold;
-        transition: color 0.3s ease;
-      }
-    
-      nav a:hover {
-        color: #2F2F2F;
-      }
-    
-      section {
-        padding: 2rem;
-        background-color: white;
-        margin: 1.5rem auto;
-        width: 90%;
-        max-width: 1000px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        animation: fadeIn 1s ease-in-out;
-      }
-    
-      section h3 {
-        margin-bottom: 1rem;
-        color: #084C61;
-      }
-    
-      article p {
-        margin-bottom: 1rem;
-      }
-    
-      img, video {
-        max-width: 100%;
-        border-radius: 8px;
-        margin-top: 1rem;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      }
-    
+
+      section,
       aside {
-        background-color: #F0F0F0;
-        padding: 1.5rem;
-        margin: 1rem auto;
-        width: 90%;
-        max-width: 900px;
-        border-left: 5px solid #084C61;
-        border-radius: 5px;
-        animation: slideIn 1s ease-in-out;
-      }
-    
-      aside h4 {
-        color: #084C61;
-        margin-bottom: 0.5rem;
-      }
-    
-      ul li, ol li {
-        margin-left: 1.5rem;
-        margin-bottom: 0.5rem;
-      }
-    
-      blockquote {
-        border-left: 5px solid #084C61;
-        margin: 1rem 0;
-        padding-left: 1rem;
-        font-style: italic;
-        background-color: #F8F8F8;
-      }
-    
-      footer {
-        background-color: #084C61;
-        color: white;
-        text-align: center;
         padding: 1rem;
-        margin-top: 2rem;
-        font-size: 0.9rem;
       }
-    
-      form {
-        margin-top: 1rem;
-      }
-    
-      input, textarea, select, button {
-        width: 100%;
-        padding: 0.7rem;
-        margin-top: 0.5rem;
-        border: 1px solid #CCC;
-        border-radius: 5px;
-        font-size: 1rem;
-      }
-    
-      button {
-        background-color: #084C61;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        margin-top: 1rem;
-      }
-    
-      button:hover {
-        background-color: #062F3C;
-      }
-    
-      /* Animações */
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    
-      @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    
-      @keyframes slideIn {
-        from { opacity: 0; transform: translateX(-20px); }
-        to { opacity: 1; transform: translateX(0); }
-      }
-    
-      /* Responsividade */
-      @media (max-width: 768px) {
-        nav ul {
-          flex-direction: column;
-          align-items: center;
-        }
-    
-        section, aside {
-          padding: 1rem;
-        }
-      }
-    </style>
-    
-    
+    }
+  </style>
+
+
 </head>
+
 <body>
-    <header>
+  <header>
     <h1>Explorando o mundo</h1>
     <h2>Seu guia de viagens ao redor do mundo</h2>
-    </header>
+  </header>
 
-    <nav>
-      <h3>Menu de Navegação</h3>
-      <ul>
-        <li><a href="#paris">Paris</a></li>
-        <li><a href="#tokyo">Tóquio</a></li>
-        <li><a href="#rio">Rio de Janeiro</a></li>
-        <li><a href="#roma">Roma</a></li>
-        <li><a href="#planejamento">Planejamento</a></li>
-        <li><a href="#mala">Não esqueça de levar na mala</a></li>
-        <li><a href="#contato">Contato</a></li>
-        <li><a href="#citações">Citações</a></li>
-      </ul>
-    </nav>
+  <nav>
+    <h3>Menu de Navegação</h3>
+    <ul>
+      <li><a href="#paris">Paris</a></li>
+      <li><a href="#tokyo">Tóquio</a></li>
+      <li><a href="#rio">Rio de Janeiro</a></li>
+      <li><a href="#roma">Roma</a></li>
+      <li><a href="#planejamento">Planejamento</a></li>
+      <li><a href="#mala">Não esqueça de levar na mala</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="#citações">Citações</a></li>
+    </ul>
+  </nav>
 
-    <section id="paris">
-        <h3>Viagens pela Europa</h3>
-        <article>
-            <h3>Paris – A Cidade Luz</h3>
-            <article>
-              <p>Paris é sinônimo de romance, arte e elegância. Das margens do Sena à torre Eiffel iluminada, tudo em Paris inspira encanto e história.</p>
-              <p><strong>Dica de ouro:</strong> evite restaurantes muito turísticos. Caminhe algumas ruas além dos pontos principais e descubra bistrôs autênticos e mais baratos.</p>
-              <p>Veja abaixo um vídeo com imagens noturnas pelas ruas parisienses. <em>Vale cada segundo!</em></p>
-            <img src="img/paris.jpg" alt="Vista da Torre Eiffel" />
-            <video src="vid/video paris.mp4" controls>Seu navegador não suporta vídeo.</video>
-        </article>
-    </section>
-    <section id="roma">
-        <h3>Roma – A Cidade Eterna</h3>
-        <article>
-          <p>Andar por Roma é como visitar um museu a céu aberto. Coliseu, Fontana di Trevi, Vaticano — tudo respira história e beleza.</p>
-          <p><strong>Não esqueça:</strong> leve sempre uma garrafa de água reutilizável. As fontes públicas (nasoni) espalhadas pela cidade têm água potável e gelada!</p>
-          <p>Dá uma olhada nesse vídeo com o famoso Coliseu de Roma. <em>É de arrepiar!</em></p>
-            <img src="img/coliseu-roma.jpg" alt="Coliseu de Roma" />
-            <video src="vid/video roma.mp4" controls>Seu navegador não suporta vídeo.</video>
-        </article>
-    </section>
-    
-    <section id="tokyo">
-        <h3>Viagens pela Ásia</h3>
-        <h3>Tóquio – Tradição e Futuro</h3>
-        <article>
-          <p>Tóquio é uma explosão de sensações: luzes neon, templos milenares, culinária inovadora e tecnologia por todos os lados.</p>
-          <p><strong>Dica de viajante:</strong> experimente um jantar em um izakaya (bar típico japonês). É barato, autêntico e cheio de surpresas!</p>
-          <p><em>Olhe esse vídeo</em> e mergulhe na energia de Shibuya, o cruzamento mais movimentado do mundo:</p>
-            <img src="img/tokyyy.jpg" alt="Vista de Tóquio" />
-            <video src="vid/video tokyo.mp4" controls>Seu navegador não suporta vídeo.</video>
-        </article>
-    </section>
-    
-    <section id="rio">
-        <h3>Viagens pela América do Sul</h3>
-        <h3>Rio de Janeiro – Beleza Natural e Cultura</h3>
-  <article>
-    <p>Com praias famosas, morros icônicos e uma alegria contagiante, o Rio é o cartão-postal mais vibrante do Brasil.</p>
-    <p><strong>Dica local:</strong> visite o Pão de Açúcar no fim da tarde e pegue o pôr do sol lá de cima. O visual é indescritível!</p>
-    <p>Confira esse vídeo com imagens aéreas incríveis do Rio e se apaixone:</p>
-            <img src="img/rio.jpg" alt="Praia de Copacabana" />
-            <video src="vid/video rio.mp4" controls>Seu navegador não suporta vídeo.</video>
-        </article>
-    </section>
-    
+  <section id="paris">
+    <h3>Viagens pela Europa</h3>
+    <article>
+      <h3>Paris – A Cidade Luz</h3>
+      <article>
+        <p>Paris é sinônimo de romance, arte e elegância. Das margens do Sena à torre Eiffel iluminada, tudo em Paris
+          inspira encanto e história.</p>
+        <p><strong>Dica de ouro:</strong> evite restaurantes muito turísticos. Caminhe algumas ruas além dos pontos
+          principais e descubra bistrôs autênticos e mais baratos.</p>
+        <p>Veja abaixo um vídeo com imagens noturnas pelas ruas parisienses. <em>Vale cada segundo!</em></p>
+        <img src="img/paris.jpg" alt="Vista da Torre Eiffel" />
+        <video src="vid/video paris.mp4" controls>Seu navegador não suporta vídeo.</video>
+      </article>
+  </section>
+  <section id="roma">
+    <h3>Roma – A Cidade Eterna</h3>
+    <article>
+      <p>Andar por Roma é como visitar um museu a céu aberto. Coliseu, Fontana di Trevi, Vaticano — tudo respira
+        história e beleza.</p>
+      <p><strong>Não esqueça:</strong> leve sempre uma garrafa de água reutilizável. As fontes públicas (nasoni)
+        espalhadas pela cidade têm água potável e gelada!</p>
+      <p>Dá uma olhada nesse vídeo com o famoso Coliseu de Roma. <em>É de arrepiar!</em></p>
+      <img src="img/coliseu-roma.jpg" alt="Coliseu de Roma" />
+      <video src="vid/video roma.mp4" controls>Seu navegador não suporta vídeo.</video>
+    </article>
+  </section>
+
+  <section id="tokyo">
+    <h3>Tóquio – Tradição e Futuro</h3>
+    <article>
+      <p>Tóquio é uma explosão de sensações: luzes neon, templos milenares, culinária inovadora e tecnologia por todos
+        os lados.</p>
+      <p><strong>Dica de viajante:</strong> experimente um jantar em um izakaya (bar típico japonês). É barato,
+        autêntico e cheio de surpresas!</p>
+      <p><em>Olhe esse vídeo</em> e mergulhe na energia de Shibuya, o cruzamento mais movimentado do mundo:</p>
+      <img src="img/tokyyy.jpg" alt="Vista de Tóquio" />
+      <video src="vid/video tokyo.mp4" controls>Seu navegador não suporta vídeo.</video>
+    </article>
+  </section>
+
+  <section id="rio">
+    <h3>Rio de Janeiro – Beleza Natural e Cultura</h3>
+    <article>
+      <p>Com praias famosas, morros icônicos e uma alegria contagiante, o Rio é o cartão-postal mais vibrante do Brasil.
+      </p>
+      <p><strong>Dica local:</strong> visite o Pão de Açúcar no fim da tarde e pegue o pôr do sol lá de cima. O visual é
+        indescritível!</p>
+      <p>Confira esse vídeo com imagens aéreas incríveis do Rio e se apaixone:</p>
+      <img src="img/rio.jpg" alt="Praia de Copacabana" />
+      <video src="vid/video rio.mp4" controls>Seu navegador não suporta vídeo.</video>
+    </article>
+  </section>
+
+  <div class="asides-container">
     <aside>
-        <h4>Curiosidade de Paris</h4>
-        <p>Você sabia que em Paris existe um apartamento secreto no topo da Torre Eiffel? Gustave Eiffel o usava para receber convidados especiais.</p>
-        <p><a href="https://www.paris.fr" target="_blank">Descubra mais curiosidades sobre Paris aqui.</a></p>
-      </aside>
-      
-      <aside>
-        <h4>Dica Cultural: Japão</h4>
-        <p>No Japão, é costume fazer uma leve reverência ao cumprimentar alguém. Aperto de mãos não é tão comum como no Ocidente.</p>
-        <p>Ah, e nunca espete seus hashis no arroz! É um gesto associado a funerais por lá.</p>
-      </aside>
-      
-      <aside>
-        <h4>Sabia dessa? (Rio de Janeiro)</h4>
-        <p>O nome "Rio de Janeiro" surgiu porque os portugueses acharam que a Baía de Guanabara era a foz de um rio — e chegaram lá em janeiro de 1502.</p>
-        <p>Pra quem vai visitar: fique de olho nos vendedores de mate e biscoito Globo nas praias — são parte da experiência carioca!</p>
-      </aside>
-      
-      <aside>
-        <h4>Fato Curioso sobre Roma</h4>
-        <p>O Coliseu já foi palco de batalhas navais. Os romanos o enchiam com água para simular guerras no mar, com barcos de verdade!</p>
-      </aside>
-      
-      <aside>
-        <h4>Sabia disso?</h4>
-        <p>Estudos mostram que planejar uma viagem pode te deixar mais feliz do que realmente viajar. O cérebro curte a antecipação!</p>
-      </aside>
-      
-      <aside>
-        <h4>Ferramentas de Viagem</h4>
-        <ul>
-          <li><a href="https://www.skyscanner.com.br" target="_blank">Skyscanner – Passagens aéreas</a></li>
-          <li><a href="https://www.booking.com" target="_blank">Booking – Hospedagem</a></li>
-          <li><a href="https://www.rome2rio.com" target="_blank">Rome2Rio – Planejamento de rotas</a></li>
-        </ul>
-      </aside>
+      <h4>Curiosidade de Paris</h4>
+      <p>Você sabia que em Paris existe um apartamento secreto no topo da Torre Eiffel? Gustave Eiffel o usava para
+        receber convidados especiais.</p>
+      <p><a href="https://www.paris.fr" target="_blank">Descubra mais curiosidades sobre Paris aqui.</a></p>
+    </aside>
 
-      <section id="planejamento">
-        <h3>Passos para Planejar sua Próxima Viagem</h3>
-        <ol>
-          <li>Escolha o destino dos seus sonhos.</li>
-          <li>Defina a duração e as datas da viagem.</li>
-          <li>Pesquise sobre o clima e costumes locais.</li>
-          <li>Monte um roteiro com as atrações que deseja visitar.</li>
-          <li>Reserve passagens e hospedagem com antecedência.</li>
-          <li>Prepare sua mala com tudo o que precisa (sem exagerar!).</li>
-          <li>Curta cada momento da sua jornada!</li>
-        </ol>
-      </section>
-      
-      <section id="mala">
-        <h3>O que Não Pode Faltar na Sua Mala</h3>
-        <ul>
-          <li>Documentos pessoais (RG, passaporte, cartão de vacinação).</li>
-          <li>Cartões de crédito/débito e um pouco de dinheiro em espécie.</li>
-          <li>Roupas adequadas ao clima do destino.</li>
-          <li>Itens de higiene pessoal (escova de dentes, shampoo, etc.).</li>
-          <li>Adaptador universal de tomadas.</li>
-          <li>Carregador de celular e power bank.</li>
-          <li>Remédios essenciais e receita médica (se necessário).</li>
-          <li>Óculos escuros e protetor solar.</li>
-          <li>Um bom livro ou fone de ouvido para os trajetos.</li>
-        </ul>
-      </section>
-      
+    <aside>
+      <h4>Dica Cultural: Japão</h4>
+      <p>No Japão, é costume fazer uma leve reverência ao cumprimentar alguém. Aperto de mãos não é tão comum como no
+        Ocidente.</p>
+      <p>Ah, e nunca espete seus hashis no arroz! É um gesto associado a funerais por lá.</p>
+    </aside>
 
-      <section id="citações">
-        <h3>Citações Inspiradoras</h3>
-      
-        <blockquote cite="https://www.brainyquote.com/quotes/saint_augustine_121827">
-          "O mundo é um livro, e aqueles que não viajam leem apenas uma página."
-          <footer>— Santo Agostinho</footer>
-        </blockquote>
-      
-        <blockquote cite="https://www.goodreads.com/quotes/8728">
-          "Viajar é fatal para o preconceito, a intolerância e a mente estreita."
-          <footer>— Mark Twain</footer>
-        </blockquote>
-      
-        <blockquote cite="https://www.passagensimperdiveis.com.br/dicas/frases-viagem/">
-          "A vida é curta e o mundo é enorme. Explore sem medo."
-          <footer>— Anônimo</footer>
-        </blockquote>
-        
-        <blockquote cite="https://www.goodreads.com/quotes/1639">
-          "Não viajamos para escapar da vida, mas para a vida não escapar de nós."
-          <footer>— Anônimo</footer>
-        </blockquote>
-        
-        <blockquote cite="https://www.passagensimperdiveis.com.br/dicas/frases-viagem/">
-          "Viajar ensina mais do que qualquer sala de aula."
-          <footer>— Anônimo</footer>
-        </blockquote>
-        
-        <blockquote cite="https://www.travelandleisure.com/quotes-about-travel-7093055">
-          "A felicidade não está na estrada para onde vamos, mas sim no jeito de viajar."
-          <footer>— Margaret Lee Runbeck</footer>
-        </blockquote>
-      </section>
-      
-      <section id="contato">
-        <h3>Fale com a gente!</h3>
-        <p>Tem dúvidas, sugestões ou quer compartilhar sua experiência? Preencha o formulário abaixo:</p>
-      
-        <form action="#" method="post">
-          <label for="nome">Nome:</label><br>
-          <input type="text" id="nome" name="nome" placeholder="Seu nome" required><br><br>
-      
-          <label for="email">E-mail:</label><br>
-          <input type="email" id="email" name="email" placeholder="seu@email.com" required><br><br>
-      
-          <label for="assunto">Assunto:</label><br>
-          <select id="assunto" name="assunto" required>
-            <option value="">Selecione um assunto</option>
-            <option value="duvida">Dúvida</option>
-            <option value="sugestao">Sugestão</option>
-            <option value="relato">Relato de viagem</option>
-          </select><br><br>
-      
-          <label for="mensagem">Mensagem:</label><br>
-          <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea><br><br>
-      
-          <button type="submit">Enviar Mensagem</button>
-        </form>
-      </section>
-      
+    <aside>
+      <h4>Sabia dessa? (Rio de Janeiro)</h4>
+      <p>O nome "Rio de Janeiro" surgiu porque os portugueses acharam que a Baía de Guanabara era a foz de um rio — e
+        chegaram lá em janeiro de 1502.</p>
+      <p>Pra quem vai visitar: fique de olho nos vendedores de mate e biscoito Globo nas praias — são parte da
+        experiência carioca!</p>
+    </aside>
+
+    <aside>
+      <h4>Fato Curioso sobre Roma</h4>
+      <p>O Coliseu já foi palco de batalhas navais. Os romanos o enchiam com água para simular guerras no mar, com
+        barcos de verdade!</p>
+    </aside>
+
+    <aside>
+      <h4>Sabia disso?</h4>
+      <p>Estudos mostram que planejar uma viagem pode te deixar mais feliz do que realmente viajar. O cérebro curte a
+        antecipação!</p>
+    </aside>
+
+    <aside>
+      <h4>Ferramentas de Viagem</h4>
+      <ul>
+        <li><a href="https://www.skyscanner.com.br" target="_blank">Skyscanner – Passagens aéreas</a></li>
+        <li><a href="https://www.booking.com" target="_blank">Booking – Hospedagem</a></li>
+        <li><a href="https://www.rome2rio.com" target="_blank">Rome2Rio – Planejamento de rotas</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <section id="planejamento">
+    <h3>Passos para Planejar sua Próxima Viagem</h3>
+    <ol>
+      <li>Escolha o destino dos seus sonhos.</li>
+      <li>Defina a duração e as datas da viagem.</li>
+      <li>Pesquise sobre o clima e costumes locais.</li>
+      <li>Monte um roteiro com as atrações que deseja visitar.</li>
+      <li>Reserve passagens e hospedagem com antecedência.</li>
+      <li>Prepare sua mala com tudo o que precisa (sem exagerar!).</li>
+      <li>Curta cada momento da sua jornada!</li>
+    </ol>
+  </section>
+
+  <section id="mala">
+    <h3>O que Não Pode Faltar na Sua Mala</h3>
+    <ul>
+      <li>Documentos pessoais (RG, passaporte, cartão de vacinação).</li>
+      <li>Cartões de crédito/débito e um pouco de dinheiro em espécie.</li>
+      <li>Roupas adequadas ao clima do destino.</li>
+      <li>Itens de higiene pessoal (escova de dentes, shampoo, etc.).</li>
+      <li>Adaptador universal de tomadas.</li>
+      <li>Carregador de celular e power bank.</li>
+      <li>Remédios essenciais e receita médica (se necessário).</li>
+      <li>Óculos escuros e protetor solar.</li>
+      <li>Um bom livro ou fone de ouvido para os trajetos.</li>
+    </ul>
+  </section>
+
+
+  <section id="citações">
+    <h3>Citações Inspiradoras</h3>
+
+    <blockquote cite="https://www.brainyquote.com/quotes/saint_augustine_121827">
+      "O mundo é um livro, e aqueles que não viajam leem apenas uma página."
+      <footer>— Santo Agostinho</footer>
+    </blockquote>
+
+    <blockquote cite="https://www.goodreads.com/quotes/8728">
+      "Viajar é fatal para o preconceito, a intolerância e a mente estreita."
+      <footer>— Mark Twain</footer>
+    </blockquote>
+
+    <blockquote cite="https://www.passagensimperdiveis.com.br/dicas/frases-viagem/">
+      "A vida é curta e o mundo é enorme. Explore sem medo."
+      <footer>— Anônimo</footer>
+    </blockquote>
+
+    <blockquote cite="https://www.goodreads.com/quotes/1639">
+      "Não viajamos para escapar da vida, mas para a vida não escapar de nós."
+      <footer>— Anônimo</footer>
+    </blockquote>
+
+    <blockquote cite="https://www.passagensimperdiveis.com.br/dicas/frases-viagem/">
+      "Viajar ensina mais do que qualquer sala de aula."
+      <footer>— Anônimo</footer>
+    </blockquote>
+
+    <blockquote cite="https://www.travelandleisure.com/quotes-about-travel-7093055">
+      "A felicidade não está na estrada para onde vamos, mas sim no jeito de viajar."
+      <footer>— Margaret Lee Runbeck</footer>
+    </blockquote>
+  </section>
+
+  <section id="contato">
+    <h3>Fale com a gente!</h3>
+    <p>Tem dúvidas, sugestões ou quer compartilhar sua experiência? Preencha o formulário abaixo:</p>
+
+    <form action="#" method="post">
+      <label for="nome">Nome:</label><br>
+      <input type="text" id="nome" name="nome" placeholder="Seu nome" required><br><br>
+
+      <label for="email">E-mail:</label><br>
+      <input type="email" id="email" name="email" placeholder="seu@email.com" required><br><br>
+
+      <label for="assunto">Assunto:</label><br>
+      <select id="assunto" name="assunto" required>
+        <option value="">Selecione um assunto</option>
+        <option value="duvida">Dúvida</option>
+        <option value="sugestao">Sugestão</option>
+        <option value="relato">Relato de viagem</option>
+      </select><br><br>
+
+      <label for="mensagem">Mensagem:</label><br>
+      <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..."
+        required></textarea><br><br>
+
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Bernardo Pedroso Finkler — Todos os direitos reservados.</p>
+    <p>
+      <a href="https://github.com/BeFinkler" target="_blank"
+        style="color: #EAEAEA; text-decoration: underline;">GitHub</a>
+    </p>
+  </footer>
+
 
 </body>
+
 </html>

@@ -88,13 +88,31 @@
       margin-bottom: 1rem;
     }
 
-    img,
-    video {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-top: 1rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+    section img,
+section video {
+  display: block;
+  margin: 2rem auto;
+  max-width: 90%;
+  border: 4px solid #084C61; 
+  border-radius: 12px; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+  background-color: #F0F8FF; 
+  padding: 8px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+section img:hover,
+section video:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(8, 76, 97, 0.7); 
+}
+
+
+section video:hover {
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
 
     .asides-container {
       display: flex;
@@ -150,9 +168,6 @@
       text-decoration: underline;
     }
 
-
-
-
     blockquote {
       border-left: 5px solid #084C61;
       margin: 1rem 0;
@@ -199,7 +214,30 @@
       background-color: #062F3C;
     }
 
-    /* Animações */
+    .audio-area {
+  background-color: #062F3C;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 40px auto;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 50, 0.6);
+}
+
+.audio-area p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.audio-area audio {
+  width: 100%;
+  border-radius: 8px;
+}
+
+
+    
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -248,7 +286,7 @@
       }
     }
 
-    /* Responsividade */
+   
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
@@ -285,6 +323,15 @@
     </ul>
   </nav>
 
+  <div class="audio-area">
+    <p>Para entrar no clima, escute essa trilha sonora:</p>
+    <audio controls>
+      <source src="aud/Sabrina Carpenter - Espresso (Official Audio).mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio HTML5.
+    </audio>
+  </div>
+  
+
   <section id="paris">
     <h3>Viagens pela Europa</h3>
     <article>
@@ -296,7 +343,7 @@
           principais e descubra bistrôs autênticos e mais baratos.</p>
         <p>Veja abaixo um vídeo com imagens noturnas pelas ruas parisienses. <em>Vale cada segundo!</em></p>
         <img src="img/parisss.jpg" alt="Vista da Torre Eiffel" />
-        <video src="vid/video paris.mp4" controls>Seu navegador não suporta vídeo.</video>
+        <video src="vid/video parisdas.mp4" controls>Seu navegador não suporta vídeo.</video>
       </article>
   </section>
   <section id="roma">
@@ -308,7 +355,7 @@
         espalhadas pela cidade têm água potável e gelada!</p>
       <p>Dá uma olhada nesse vídeo com o famoso Coliseu de Roma. <em>É de arrepiar!</em></p>
       <img src="img/coliseu.jpeg" alt="Coliseu de Roma" />
-      <video src="vid/video roma.mp4" controls>Seu navegador não suporta vídeo.</video>
+      <video src="vid/video coliseuuu.mp4" controls>Seu navegador não suporta vídeo.</video>
     </article>
   </section>
 
@@ -321,7 +368,7 @@
         autêntico e cheio de surpresas!</p>
       <p><em>Olhe esse vídeo</em> e mergulhe na energia de Shibuya, o cruzamento mais movimentado do mundo:</p>
       <img src="img/tokyyy.jpg" alt="Vista de Tóquio" />
-      <video src="vid/video tokyo.mp4" controls>Seu navegador não suporta vídeo.</video>
+      <video src="vid/video tokyous.mp4" controls>Seu navegador não suporta vídeo.</video>
     </article>
   </section>
 
@@ -334,7 +381,7 @@
         indescritível!</p>
       <p>Confira esse vídeo com imagens aéreas incríveis do Rio e se apaixone:</p>
       <img src="img/rio.jpg" alt="Praia de Copacabana" />
-      <video src="vid/video rio.mp4" controls>Seu navegador não suporta vídeo.</video>
+      <video src="vid/video riojjj.mp4" controls>Seu navegador não suporta vídeo.</video>
     </article>
   </section>
 
